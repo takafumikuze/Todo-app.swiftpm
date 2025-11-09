@@ -1,16 +1,31 @@
-// swift-tools-version: 5.5
+// swift-tools-version: 5.7
 
 import PackageDescription
 
 let package = Package(
     name: "Todo-app",
     platforms: [
-        .iOS(.v15)
+        .iOS(.v16)
     ],
     products: [
-        .executable(
+        .iOSApplication(
             name: "Todo-app",
-            targets: ["AppModule"]
+            targets: ["AppModule"],
+            bundleIdentifier: "com.example.todoapp",
+            displayVersion: "1.0",
+            bundleVersion: "1",
+            appIcon: .placeholder(icon: .checkmark),
+            accentColor: .presetColor(.blue),
+            supportedDeviceFamilies: [
+                .pad,
+                .phone
+            ],
+            supportedInterfaceOrientations: [
+                .portrait,
+                .landscapeRight,
+                .landscapeLeft,
+                .portraitUpsideDown(.when(deviceFamilies: [.pad]))
+            ]
         )
     ],
     targets: [
